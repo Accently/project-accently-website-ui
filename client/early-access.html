@@ -287,13 +287,13 @@
           }
         )
         .then(async (response) => {
-          console.log(response)
+          //console.log(response)
            const { error } = await stripe.confirmCardPayment(response.data.clientSecret, {
         payment_method: paymentMethodReq.paymentMethod.id,
       });
 
       if (error) {
-        console.log("Failed: " + error)
+        //console.log("Failed: " + error)
         var errorElement = document.getElementById('card-errors');
         errorElement.textContent="Failed: " + error
         errorElement.style.display = 'block';
@@ -305,10 +305,7 @@
       } 
         })
         .catch((err) => console.log("Failed: " + err));
-      console.log("****")
-      console.log(email)
-      console.log(paymentMethodReq)
-      console.log(name)
+
     }); 
     
     function stripeTokenHandler(token) {
