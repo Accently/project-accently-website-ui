@@ -2,6 +2,7 @@ const stripe = require("stripe")('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wE
 
 // eslint-disable-next-line import/no-anonymous-default-export
 exports.handler = async (event, context) => {
+    
   if (event.httpMethod === "POST") {
     try {
       const amount = JSON.parse(event.body).amount;
