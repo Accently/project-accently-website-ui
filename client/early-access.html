@@ -246,7 +246,6 @@
     gPay.addEventListener("click", function () {
       document.getElementById("eventSix").style.display="none"
     });
-    
   </script>
   <script>
     var stripe = Stripe('pk_test_51Lrnh3Hn5HPNBT2DQtdgvnH7HCOm8qYTOyYDrzrIpJhAHdgeeC5n4i6qLFy2JibSXGNfjT5c419dHbVNyVZxBAY700PxxUxtgz');
@@ -316,7 +315,7 @@
           errorElement.textContent="Failed: " + err
           console.log("Failed: " + err)
         } );
-        
+
     }); 
     
     function stripeTokenHandler(token) {
