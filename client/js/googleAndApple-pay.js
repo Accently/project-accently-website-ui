@@ -28,16 +28,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     const prButton = elements.create('paymentRequestButton', {
       paymentRequest: paymentRequest,
     });
-  console.log(prButton)
     // Check the availability of the Payment Request API,
     // then mount the PaymentRequestButton
     paymentRequest.canMakePayment().then(function (result) {
-      if (result) {
+      console.log(result)
+      if (result?.googlePay) {
+        document.getElementById('applePay-element').innerHTML = 'Apple pay is not supported on your current environment';
+        document.getElementById('applePay-element').style.color = 'red';
         prButton.mount('#gpay-element');
-      } else {
-        document.getElementById('gpay-element').innerHTML = 'not availble';
+        console.log('Apple Pay support not found. Check the pre-requisites above and ensure you are testing in a supported browser.');
+      } else if(result?.applePay){
+        document.getElementById('gpay-element').innerHTML = 'Google pay is not supported on your current environment';
         document.getElementById('gpay-element').style.color = 'red';
+        prButton.mount('#applePay-element');
         console.log('Google Pay support not found. Check the pre-requisites above and ensure you are testing in a supported browser.');
+      }
+      else {
+        document.getElementById('gpay-element').innerHTML = 'Google pay is not supported on your current environment';
+        document.getElementById('gpay-element').style.color = 'red';
+        document.getElementById('applePay-element').innerHTML = 'Apple pay is not supported on your current environment';
+        document.getElementById('applePay-element').style.color = 'red';
+        console.log('Google Pay and Apple Pay support not found. Check the pre-requisites above and ensure you are testing in a supported browser.');
       }
     });
   
@@ -47,13 +58,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   
       await axios
         .post(
-          "/.netlify/functions/payment-card",
+          "/.netlify/functions/buttonPay",
           {
-            amount:"1000000",
+            currency: 'usd',
+            paymentMethodType: 'card',
           }
         )
         .then(async (response) => {
-          //console.log(response)
+          console.log(response)
+          if (!response.data.clientSecret) {
+            console.log('fail');
+            return;
+          }
       console.log(`Client secret returned.`);
   
       // Confirm the PaymentIntent without handling potential next actions (yet).

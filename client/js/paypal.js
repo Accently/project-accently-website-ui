@@ -4,8 +4,10 @@ const paypalButtonsComponent = paypal.Buttons({
 // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
 style: {
   color: "gold",
-  shape: "rect",
-  layout: "horizontal",
+  layout: window.innerWidth<768?"vertical":"horizontal",
+  shape:"pill",
+ label:"pay",
+ tagline :false,
 },
 
 // set up the transaction
