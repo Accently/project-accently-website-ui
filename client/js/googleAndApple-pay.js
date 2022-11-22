@@ -110,9 +110,13 @@ document.addEventListener('DOMContentLoaded', async () => {
           return;
         }
         console.log(`Payment ${paymentIntent.status}: ${paymentIntent.id}`);
+         window.location.replace("/thank-you-early-access.html");
+          return;
       }
   
       console.log(`Payment ${paymentIntent.status}: ${paymentIntent.id}`);
+          window.location.replace("/thank-you-early-access.html");
+          return;
     });
   })
 })
