@@ -1,9 +1,9 @@
-const stripe = require("stripe")('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wEUc5LXQbDRuRRKQ7pBJccxVCGoOytN4UAtfiQKG6nOgxekqUI4nT00fYlNuUwH');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 exports.handler = async (event, context) => {
-    
-    if (event.httpMethod === "POST") {
-    const {paymentMethodType, currency,paymentMethodOptions} = JSON.parse(event.body);
-  
+
+  if (event.httpMethod === "POST") {
+    const { paymentMethodType, currency, paymentMethodOptions } = JSON.parse(event.body);
+
     // Each payment method type has support for different currencies. In order to
     // support many payment method types and several currencies, this server
     // endpoint accepts both the payment method type and the currency as
@@ -15,10 +15,10 @@ exports.handler = async (event, context) => {
       amount: 10000,
       currency: 'usd',
     }
-  
+
     // If this is for an ACSS payment, we add payment_method_options to create
     // the Mandate.
-    if(paymentMethodType === 'acss_debit') {
+    if (paymentMethodType === 'acss_debit') {
       params.payment_method_options = {
         acss_debit: {
           mandate_options: {
@@ -44,14 +44,14 @@ exports.handler = async (event, context) => {
       params.confirm = true
       params.customer = req.body.customerId || await stripe.customers.create().then(data => data.id)
     }
-  
+
     /**
      * If API given this data, we can overwride it
      */
     if (paymentMethodOptions) {
       params.payment_method_options = paymentMethodOptions
     }
-  
+
     // Create a PaymentIntent with the amount, currency, and a payment method type.
     //
     // See the documentation [0] for the full list of supported parameters.
@@ -59,22 +59,22 @@ exports.handler = async (event, context) => {
     // [0] https://stripe.com/docs/api/payment_intents/create
     try {
       const paymentIntent = await stripe.paymentIntents.create(params);
-  
+
       // Send publishable key and PaymentIntent details to client
       return {
         statusCode: 200,
         body: JSON.stringify({
-            clientSecret: paymentIntent.client_secret,
-            nextAction: paymentIntent.next_action,
-          }),
+          clientSecret: paymentIntent.client_secret,
+          nextAction: paymentIntent.next_action,
+        }),
       };
     } catch (e) {
-      
+
       return {
         statusCode: 200,
         error: {
-            message: e.message,
-          },
+          message: e.message,
+        },
       };
     }
   };
