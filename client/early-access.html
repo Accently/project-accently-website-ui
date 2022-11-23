@@ -298,7 +298,7 @@
         .then(async (response) => {
           //console.log(response)
           const { error } = await stripe.confirmCardPayment(response.data.clientSecret, {
-            payment_method: paymentMethodReq.paymentMethod.id,
+            payment_method: charge.paymentMethod.id,
           });
 
           if (error) {
