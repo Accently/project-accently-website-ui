@@ -1,3 +1,4 @@
 /server-side-tracking /.netlify/functions/server-side-tracking 200
 /submit /.netlify/functions/submit 200
-/charge /.netlify/functions/charge 200
+/stripe-card-charge /.netlify/functions/stripe-card-charge 200
+/stripe-button-charge /.netlify/functions/stripe-button-charge 200
