@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
     try {
 
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: 100000,
+        amount: 10000,
         currency: "usd"
       });
       console.log(paymentIntent)
