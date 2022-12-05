@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
     // Some example payment method types include `card`, `ideal`, and `alipay`.
     const params = {
       payment_method_types: [paymentMethodType],
-      amount: 10000,
+      amount: 1000,
       currency: 'usd',
     }
 
