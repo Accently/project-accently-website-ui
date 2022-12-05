@@ -1,11 +1,11 @@
 exports.handler = async (event, context) => {
-    
+
     if (event.httpMethod === "GET") {
         const createOrderPayload = {
             purchase_units: [
                 {
                     amount: {
-                        value: "100.00"
+                        value: "10.00"
                     }
                 }
             ]
@@ -13,12 +13,12 @@ exports.handler = async (event, context) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({createOrderPayload:createOrderPayload}),
-          };
+            body: JSON.stringify({ createOrderPayload: createOrderPayload }),
+        };
     } else {
-      return {
-          statusCode: 400,
-          body: JSON.stringify({message: "METHOD NOT ALLOWED"}),
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ message: "METHOD NOT ALLOWED" }),
         };
     }
-  };
+};
