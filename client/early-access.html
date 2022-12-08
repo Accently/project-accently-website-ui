@@ -376,7 +376,8 @@
             if (error) {
               //console.log("Failed: " + error)
               var errorElement = document.getElementById("card-errors");
-              errorElement.textContent = "Failed: " + error;
+              //console.log(error)
+              errorElement.textContent = "Failed: " + error.message;
               errorElement.style.display = "block";
               return;
             } else {
@@ -388,7 +389,8 @@
           })
           .catch((err) => {
             var errorElement = document.getElementById("card-errors");
-            errorElement.textContent = "Failed: " + err;
+            //console.log(error)
+            errorElement.textContent = "Failed: " + err.message;
             errorElement.style.display = "block";
             //console.log("Failed: " + err)
           });
