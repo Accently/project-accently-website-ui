@@ -5,18 +5,20 @@ const shortid = require("shortid");
 const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
+  //console.log(event.body)
 
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
+  //console.log(email)
   const myCookie = cookie.serialize('emailHash', email);
 
   try {
-    mongoose.connect(process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true,
+      useUnifiedTopology: true, useFindAndModify: false});
 
     const existingUser = await User.findOne({ email: email });
 
     if (existingUser) {
-
     }
 
     if (!existingUser) {
@@ -33,14 +35,14 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 302,
       headers: {
-        "Location": "https://accently.ai/early-access",
+        "Location": "/early-access",
         'Set-Cookie': myCookie
       },
       body: "Success",
     };
 
   } catch (err) {
-
+    console.log("err")
     return {
       statusCode: 400,
       body: err,
