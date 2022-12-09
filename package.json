@@ -11,7 +11,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "facebook-nodejs-business-sdk": "^11.0.0",
-    "mongoose": "^6.6.5",
+    "mongoose": "^5.13.3",
     "netlify-cms": "^2.10.164",
     "netlify-lambda": "^2.0.7",
     "prettier": "^2.3.0",
