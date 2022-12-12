@@ -320,7 +320,7 @@
   <script>
     //Stripe Card Payment Function
     document.addEventListener("DOMContentLoaded", async () => {
-      const stripe = Stripe("ppk_live_51LqNwNCOIV1QF3sYx1TlKDFoZgD7OkhuX5KiNmsOJ2FV0U4xMHv4q09qbHXNnaz61kz362C7YQ7M7BY2CSRsnmBh005wZldzdC")
+      const stripe = Stripe("pk_live_51LqNwNCOIV1QF3sYx1TlKDFoZgD7OkhuX5KiNmsOJ2FV0U4xMHv4q09qbHXNnaz61kz362C7YQ7M7BY2CSRsnmBh005wZldzdC")
       var elements = stripe.elements();
       var style = {
         base: {
@@ -390,7 +390,7 @@
     document.addEventListener("DOMContentLoaded", async () => {
       // 1. Initialize Stripe
       const stripe = Stripe(
-        "ppk_live_51LqNwNCOIV1QF3sYx1TlKDFoZgD7OkhuX5KiNmsOJ2FV0U4xMHv4q09qbHXNnaz61kz362C7YQ7M7BY2CSRsnmBh005wZldzdC",
+        "pk_live_51LqNwNCOIV1QF3sYx1TlKDFoZgD7OkhuX5KiNmsOJ2FV0U4xMHv4q09qbHXNnaz61kz362C7YQ7M7BY2CSRsnmBh005wZldzdC",
         {
           apiVersion: "2020-08-27",
         }
@@ -416,7 +416,7 @@
       // Check the availability of the Payment Request API,
       // then mount the PaymentRequestButton
       paymentRequest.canMakePayment().then(function (result) {
-        console.log(result)
+        //console.log(result)
         if (result?.googlePay) {
           document.getElementById("applePay-element").innerHTML =
             "Apple pay is not supported on your current environment";
