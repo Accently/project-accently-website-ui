@@ -2,3 +2,4 @@
 /submit /.netlify/functions/submit 200
 /stripe-card-charge /.netlify/functions/stripe-card-charge 200
 /stripe-button-charge /.netlify/functions/stripe-button-charge 200
+/paypal-charge /.netlify/functions/paypal-charge 200
