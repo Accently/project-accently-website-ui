@@ -219,6 +219,14 @@ p {
   flex-direction: row-reverse;
 }
 
+.div-block-2.reverse.aaa {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
 .div-block-2.aaa {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -266,6 +274,10 @@ p {
   -ms-flex-direction: row;
   flex-direction: row;
   grid-column-gap: 30px;
+}
+
+.div-block-2.no-height.new-rever.hide {
+  display: none;
 }
 
 .div-block-2._3-simplet-steps {
@@ -669,6 +681,10 @@ p {
   justify-content: flex-end;
 }
 
+.div-block-11._2.asd {
+  width: 100%;
+}
+
 .div-block-12 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -688,6 +704,15 @@ p {
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
   align-items: flex-start;
+}
+
+.div-block-12.aaa {
+  width: 60%;
+  margin-bottom: 50px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .text-block-8 {
@@ -5020,6 +5045,10 @@ p {
 
 .section-16 {
   display: block;
+}
+
+.hide {
+  display: none;
 }
 
 @media screen and (min-width: 1280px) {
